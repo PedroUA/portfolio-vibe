@@ -55,6 +55,22 @@
                 transform: translateY(0px);
             }
         }
+
+        /* Regras de Responsividade para Mobile (Ecrãs mais pequenos) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem; /* Tamanho de letra reduzido para caber no telemóvel */
+                text-align: center;
+                padding: 0 15px; /* Um pequeno espaçamento lateral para o texto não colar às bordas */
+            }
+            
+            /* Suavizar a animação no telemóvel */
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-8px); }
+                100% { transform: translateY(0px); }
+            }
+        }
     </style>
 </head>
 <body>
