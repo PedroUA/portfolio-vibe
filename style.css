@@ -82,13 +82,14 @@ html, body {
   -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
 }
 
-/* Grid columns 2‑5 */
 .col--2,
 .col--3,
 .col--4,
 .col--5 {
   flex: 1 0 0;
   min-width: 1px;
+  position: relative;
+  z-index: 1;
 }
 
 .col--2 {
@@ -159,6 +160,7 @@ html, body {
   width: 100%;
   height: 100%;
   pointer-events: none;
+  z-index: 10;
 }
 
 .content-block * {
@@ -178,7 +180,8 @@ html, body {
   bottom: 457px; /* Fine-tuned for ~28.5px vertical gap to skills-container in 1920 */
   left: 540px;
   width: 1011px;
-  background: var(--bg);
+  background-color: #f7f6f4 !important;
+  z-index: 12 !important;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -220,7 +223,8 @@ html, body {
   position: absolute;
   bottom: 146px; /* 920 - 774 */
   left: calc(var(--col-photo) + 1057px); /* 1389px total -> 332px + 1057px */
-  background: var(--bg);
+  background-color: #f7f6f4 !important;
+  z-index: 12 !important;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -598,64 +602,6 @@ html, body {
 /* ============================================================
    RESPONSIVE — TABLET & MOBILE
    ============================================================ */
-/* Short viewport — laptops with ≤700px visible height (e.g. 1366×768 with browser chrome) */
-@media (max-height: 700px) and (min-width: 769px) {
-  .name-container {
-    bottom: auto;
-    top: 4vh;
-    left: 384px;
-    width: 812px;
-    padding-top: 14px;
-    padding-bottom: 28px;
-    gap: 16px;
-  }
-
-  .label-portfolio {
-    font-size: clamp(24px, 4.5vh, 38px);
-  }
-
-  .name {
-    font-size: clamp(80px, 16vh, 143px);
-    line-height: 0.72em;
-    letter-spacing: -1.2px;
-  }
-
-  .skills-container {
-    bottom: 14vh;
-    left: calc(var(--col-photo) + 734px);
-  }
-
-  .skill {
-    font-size: clamp(24px, 5.5vh, 38px);
-    line-height: 1.22em;
-  }
-
-  .scroll-indicator {
-    bottom: 16px;
-    width: 22px;
-    height: 34px;
-  }
-
-  .scroll-line {
-    top: 5px;
-    width: 3px;
-    height: 6px;
-  }
-}
-
-/* Combined: short viewport + narrow width */
-@media (max-height: 700px) and (max-width: 1440px) and (min-width: 769px) {
-  .name-container {
-    left: 28vw;
-    width: 58vw;
-  }
-
-  .skills-container {
-    left: auto;
-    right: 3vw;
-  }
-}
-
 @media (max-width: 1440px) {
   /* Fallback to original 1440x900 design constraints */
   .name-container {
@@ -679,7 +625,7 @@ html, body {
   .graphic--uiux { transform: translate(-50%, -50%) scale(0.8); }
   .graphic--3d { transform: translate(-50%, -50%) scale(0.8); }
   .graphic--game { transform: translate(-50%, -50%) scale(0.8); }
-  .graphic--sound { transform: translate(-50%, -50%) scale(0.85); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(1, 0.85); }
   .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.8); }
   .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.8); }
   .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.8); }
@@ -709,7 +655,7 @@ html, body {
   .graphic--uiux { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
   .graphic--3d { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
   .graphic--game { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
-  .graphic--sound { transform: translate(-50%, -50%) scale(0.75); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(1, 0.75); }
   .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.7); }
   .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.7); }
   .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.7); }
@@ -744,7 +690,7 @@ html, body {
   .graphic--uiux { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
   .graphic--3d { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
   .graphic--game { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
-  .graphic--sound { transform: translate(-50%, -50%) scale(0.65); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(1, 0.65); }
   .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.6); }
   .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.6); }
   .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.6); }
@@ -936,3 +882,61 @@ html, body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+/* ============================================================
+   RESPONSIVE — LOW HEIGHT LAPTOPS (e.g. 1366x768 / 1366x615 viewport)
+   ============================================================ */
+@media (max-height: 785px) and (min-width: 769px) {
+  .name-container {
+    bottom: 310px;
+    padding-top: 10px;
+    padding-bottom: 24px;
+    gap: 16px;
+    width: 700px;
+  }
+
+  .label-portfolio {
+    font-size: 28px;
+    margin-left: 0.12em;
+  }
+
+  .name {
+    font-size: 110px;
+    line-height: 80px;
+    letter-spacing: -1.1px;
+  }
+
+  .skills-container {
+    bottom: 110px;
+    padding-top: 8px;
+    padding-bottom: 12px;
+    /* Position container inside Column 4 (left of the Column 5 divider line) to fit the 1366px viewport */
+    left: calc(var(--col-photo) + 0.75 * (100vw - var(--col-photo)) - 220px);
+  }
+
+  .skill {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;
+    height: 36px;
+  }
+
+  .scroll-line {
+    animation: scroll-wheel-short 1.6s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+  }
+}
+
+@keyframes scroll-wheel-short {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0;
+  }
+}
+
