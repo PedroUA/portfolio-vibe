@@ -133,13 +133,12 @@ html, body {
   filter: grayscale(100%);
   animation: photo-reveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
   transition: filter 0.6s ease;
-  mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
 }
 
 .photo:hover {
   filter: grayscale(60%);
 }
+
 
 @keyframes photo-reveal {
   from {
@@ -335,8 +334,6 @@ html, body {
   display: block;
   filter: grayscale(100%);
   transition: opacity 0.6s ease, filter 0.6s ease;
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 15%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%);
 }
 
 .about-photo--default {
