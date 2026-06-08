@@ -837,3 +837,44 @@ html, body {
     font-size: clamp(24px, 5vw, 32px);
   }
 }
+
+/* ============================================================
+   VERSION BADGE
+   ============================================================ */
+.version-badge {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  padding: 8px 16px 8px 28px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: var(--text);
+  background: rgba(247, 246, 244, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--text-20);
+  border-radius: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.version-badge::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e0a030;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
