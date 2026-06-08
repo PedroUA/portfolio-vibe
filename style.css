@@ -598,6 +598,64 @@ html, body {
 /* ============================================================
    RESPONSIVE — TABLET & MOBILE
    ============================================================ */
+/* Short viewport — laptops with ≤700px visible height (e.g. 1366×768 with browser chrome) */
+@media (max-height: 700px) and (min-width: 769px) {
+  .name-container {
+    bottom: auto;
+    top: 4vh;
+    left: 384px;
+    width: 812px;
+    padding-top: 14px;
+    padding-bottom: 28px;
+    gap: 16px;
+  }
+
+  .label-portfolio {
+    font-size: clamp(24px, 4.5vh, 38px);
+  }
+
+  .name {
+    font-size: clamp(80px, 16vh, 143px);
+    line-height: 0.72em;
+    letter-spacing: -1.2px;
+  }
+
+  .skills-container {
+    bottom: 14vh;
+    left: calc(var(--col-photo) + 734px);
+  }
+
+  .skill {
+    font-size: clamp(24px, 5.5vh, 38px);
+    line-height: 1.22em;
+  }
+
+  .scroll-indicator {
+    bottom: 16px;
+    width: 22px;
+    height: 34px;
+  }
+
+  .scroll-line {
+    top: 5px;
+    width: 3px;
+    height: 6px;
+  }
+}
+
+/* Combined: short viewport + narrow width */
+@media (max-height: 700px) and (max-width: 1440px) and (min-width: 769px) {
+  .name-container {
+    left: 28vw;
+    width: 58vw;
+  }
+
+  .skills-container {
+    left: auto;
+    right: 3vw;
+  }
+}
+
 @media (max-width: 1440px) {
   /* Fallback to original 1440x900 design constraints */
   .name-container {
