@@ -1,0 +1,834 @@
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg: #f7f6f4;
+  --text: #474747;
+  --text-30: rgba(71, 71, 71, 0.30);
+  --text-20: rgba(71, 71, 71, 0.20);
+  --text-10: rgba(71, 71, 71, 0.10);
+  --line: #474747;
+
+  --font-family: 'Outfit', sans-serif;
+
+  /* Column width matching Figma to maintain exact pixel distances */
+  --col-photo: 380px;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: var(--font-family);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   SCROLL STRUCTURE
+   ============================================================ */
+.scroll-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.sections-wrapper {
+  width: 100%;
+  height: 200vh;
+  display: flex;
+  flex-direction: column;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   COLUMNS — GRID STRUCTURE
+   ============================================================ */
+.col {
+  flex-shrink: 0;
+  height: 100%;
+}
+
+/* Photo column */
+.col--photo {
+  width: var(--col-photo);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+}
+
+/* Grid columns 2‑5 */
+.col--2,
+.col--3,
+.col--4,
+.col--5 {
+  flex: 1 0 0;
+  min-width: 1px;
+}
+
+.col--2 {
+  border-left: 1px solid transparent;
+}
+
+.col--3,
+.col--4,
+.col--5 {
+  border-left: 1px solid var(--line);
+}
+
+/* Animate the grid lines in */
+.col--3,
+.col--4,
+.col--5 {
+  animation: line-grow 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.col--3 { animation-delay: 0.6s; }
+.col--4 { animation-delay: 0.75s; }
+.col--5 { animation-delay: 0.9s; }
+
+@keyframes line-grow {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* ============================================================
+   PHOTO
+   ============================================================ */
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(100%);
+  animation: photo-reveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  transition: filter 0.6s ease;
+  mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+}
+
+.photo:hover {
+  filter: grayscale(60%);
+}
+
+@keyframes photo-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   CONTENT BLOCK — ABSOLUTELY POSITIONED
+   ============================================================ */
+.content-block {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.content-block * {
+  pointer-events: auto;
+}
+
+/* ============================================================
+   NAME CONTAINER
+   ============================================================ */
+.name-container {
+  position: absolute;
+  /* Top of 'Multimedia Artist' is 445.5px from top (920-445.5=474.5px from bottom).
+     Bottom of 'Pedro Lemos' needs to be 28.5px above it, so 503px from bottom.
+     Pedro Lemos text height is 125px, starts at 122px inside container.
+     So bottom of name-container = 503px - 125px + 122px = 500px? No, let's just use exact Figma positioning for 1920x920.
+  */
+  bottom: 457px; /* Fine-tuned for ~28.5px vertical gap to skills-container in 1920 */
+  left: 540px;
+  width: 1011px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-top: 22px;
+  padding-bottom: 48px;
+}
+
+.label-portfolio {
+  font-weight: 300;
+  font-size: 47.3px;
+  line-height: normal;
+  margin-left: 0.17em;
+  animation: text-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 178px;
+  line-height: 124.6px;
+  letter-spacing: -1.78px;
+  animation: text-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+@keyframes text-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SKILLS CONTAINER
+   ============================================================ */
+.skills-container {
+  position: absolute;
+  bottom: 146px; /* 920 - 774 */
+  left: calc(var(--col-photo) + 1057px); /* 1389px total -> 332px + 1057px */
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  white-space: nowrap;
+}
+
+.skill {
+  font-weight: 300;
+  font-size: 47.3px;
+  line-height: 60px;
+  transition: color 0.35s ease, transform 0.35s ease;
+  cursor: default;
+}
+
+.skill:hover {
+  transform: translateX(6px);
+}
+
+/* Fade cascade — matching Figma opacities */
+.skill--1 { color: var(--text);    animation: skill-in 0.7s ease 0.7s both; }
+.skill--2 { color: var(--text-30); animation: skill-in 0.7s ease 0.82s both; }
+.skill--3 { color: var(--text-20); animation: skill-in 0.7s ease 0.94s both; }
+.skill--4 { color: var(--text-10); animation: skill-in 0.7s ease 1.06s both; }
+.skill--5 { color: var(--text-10); animation: skill-in 0.7s ease 1.18s both; }
+
+/* On hover, brighten the dimmed skills */
+.skill--2:hover { color: var(--text); }
+.skill--3:hover { color: var(--text); }
+.skill--4:hover { color: var(--text); }
+.skill--5:hover { color: var(--text); }
+
+@keyframes skill-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   SCROLL INDICATOR (MOUSE ICON)
+   ============================================================ */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 44px;
+  border: 2px solid var(--text);
+  border-radius: 20px;
+  animation: skill-in 1s ease 1.5s both;
+  box-sizing: border-box;
+}
+
+.scroll-line {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  /* transform: translateX(-50%); -> handled by keyframes */
+  width: 4px;
+  height: 8px;
+  background-color: var(--text);
+  border-radius: 4px;
+  animation: scroll-wheel 1.6s cubic-bezier(0.15, 0.41, 0.69, 0.94) infinite;
+}
+
+@keyframes scroll-wheel {
+  0% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(16px);
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   SECTION 2 — SPECIALTIES
+   ============================================================ */
+.section--specialties {
+  background: var(--bg);
+}
+
+.col--about {
+  width: var(--col-photo);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: grayscale(100%);
+  transition: opacity 0.6s ease, filter 0.6s ease;
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 15%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 15%);
+}
+
+.about-photo--default {
+  z-index: 1;
+}
+
+.about-photo--hover {
+  opacity: 0;
+  z-index: 2;
+}
+
+.col--about:hover .about-photo--hover {
+  opacity: 1;
+  filter: grayscale(60%);
+}
+
+.about-title-container {
+  position: absolute;
+  top: 80px;
+  left: 30px;
+  width: 269px;
+  transform: translateY(-50%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.about-title {
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1.2;
+  letter-spacing: -1.2px;
+  color: #ffffff;
+  display: inline-block;
+  transform-origin: left center;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.col--about:hover .about-title {
+  color: var(--text);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.col--specialty {
+  flex: 1 0 0;
+  min-width: 1px;
+  height: 100%;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 30px;
+}
+
+.specialty-label-container {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.specialty-label {
+  font-weight: 300;
+  font-size: 38px;
+  line-height: normal;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+/* UI/UX Graphic Positioning & Animation */
+.graphic--uiux {
+  position: absolute;
+  top: 50%;
+  left: calc(50% + 86.5px);
+  transform: translate(-50%, -50%);
+  width: 315px;
+  height: 322px;
+  filter: drop-shadow(0px 6px 4px rgba(0,0,0,0.1));
+  transition: transform 0.5s ease;
+}
+
+.graphic--uiux .wireframe-1 {
+  position: absolute;
+  left: 12.93px;
+  top: 0;
+  width: 219.7px;
+  height: 137.31px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.graphic--uiux .wireframe-2 {
+  position: absolute;
+  left: 89.31px;
+  top: 82.26px;
+  width: 227.94px;
+  height: 145.55px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.graphic--uiux .phone {
+  position: absolute;
+  left: 0;
+  top: 104.59px;
+  width: 117.52px;
+  height: 217.41px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* UI/UX Hovers */
+.col--uiux:hover .graphic--uiux {
+  transform: translate(-50%, -52%);
+}
+.col--uiux:hover .wireframe-1 {
+  transform: translate(-8px, -12px);
+}
+.col--uiux:hover .wireframe-2 {
+  transform: translate(6px, -6px);
+}
+.col--uiux:hover .phone {
+  transform: translate(4px, 6px);
+}
+
+/* 3D Modeling Graphic Positioning & Animation */
+.graphic--3d {
+  position: absolute;
+  top: calc(50% + 8px);
+  left: calc(50% + 86px);
+  transform: translate(-50%, -50%);
+  width: 290px;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
+
+.graphic--3d .cube-3d {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3D Hovers */
+.col--3d:hover .graphic--3d {
+  transform: translate(-50%, -53%);
+}
+.col--3d:hover .cube-3d {
+  transform: rotate(8deg) scale(1.05);
+}
+
+/* Game Design Graphic Positioning & Animation */
+.graphic--game {
+  position: absolute;
+  top: calc(50% + 18.68px);
+  left: calc(50% + 81px);
+  transform: translate(-50%, -50%);
+  width: 292px;
+  height: 309.36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+  overflow: visible !important;
+}
+
+.puzzle-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+#puzzle-piece-detached {
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Game Design Hovers */
+.col--game:hover .graphic--game {
+  transform: translate(-50%, -53%);
+}
+.col--game:hover #puzzle-piece-detached {
+  transform: translate(41.7px, 59.2px);
+}
+
+
+/* Sound Design Graphic Positioning & Animation */
+.graphic--sound {
+  position: absolute;
+  top: calc(50% + 0.07px);
+  left: calc(50% - 0.4px);
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 203.86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+  overflow: visible !important;
+}
+
+.sound-wave-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible !important;
+}
+
+/* transform center for wave vectors */
+#vector-9, #vector-10, #vector-11 {
+  transform-origin: 50% 109.1px;
+  transition: transform 0.4s ease;
+}
+
+/* Sound wave hover animation */
+.col--sound:hover #vector-9 {
+  animation: sound-wave-active-9 1.1s ease-in-out infinite alternate;
+}
+.col--sound:hover #vector-10 {
+  animation: sound-wave-active-10 1.4s ease-in-out infinite alternate;
+  animation-delay: 0.15s;
+}
+.col--sound:hover #vector-11 {
+  animation: sound-wave-active-11 0.8s ease-in-out infinite alternate;
+  animation-delay: 0.3s;
+}
+
+@keyframes sound-wave-active-9 {
+  0% {
+    transform: scaleY(0.65);
+  }
+  100% {
+    transform: scaleY(1.35);
+  }
+}
+
+@keyframes sound-wave-active-10 {
+  0% {
+    transform: scaleY(0.5);
+  }
+  100% {
+    transform: scaleY(1.5);
+  }
+}
+
+@keyframes sound-wave-active-11 {
+  0% {
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1.2);
+  }
+}
+
+/* ============================================================
+   RESPONSIVE — TABLET & MOBILE
+   ============================================================ */
+@media (max-width: 1440px) {
+  /* Fallback to original 1440x900 design constraints */
+  .name-container {
+    bottom: 412px;
+    left: 384px;
+    width: 812px;
+  }
+  
+  .skills-container {
+    bottom: 173px;
+    left: calc(var(--col-photo) + 734px);
+  }
+
+  .label-portfolio { font-size: 38px; }
+  .name { font-size: 143px; line-height: 100px; letter-spacing: -1.43px; }
+  .skill { font-size: 38px; line-height: 48px; }
+
+  /* Section 2 */
+  .about-title { font-size: 50px; }
+  .specialty-label { font-size: 28px; }
+  .graphic--uiux { transform: translate(-50%, -50%) scale(0.8); }
+  .graphic--3d { transform: translate(-50%, -50%) scale(0.8); }
+  .graphic--game { transform: translate(-50%, -50%) scale(0.8); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(0.85); }
+  .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.8); }
+  .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.8); }
+  .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.8); }
+}
+
+@media (max-width: 1200px) {
+  /* Scale down everything proportionally if screen is too small */
+  .name-container {
+    left: 26.67vw;
+    width: 56.38vw;
+    bottom: auto;
+    top: 26.89vh;
+  }
+  
+  .skills-container {
+    left: 74vw;
+    bottom: 19.2vh;
+  }
+
+  .name { font-size: clamp(64px, 9.93vw, 143px); line-height: 1em; }
+  .skill { font-size: clamp(24px, 2.64vw, 38px); line-height: 1.2em; }
+
+  /* Section 2 */
+  .col--about { width: var(--col-photo); }
+  .about-title { font-size: 40px; }
+  .specialty-label { font-size: 22px; }
+  .graphic--uiux { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
+  .graphic--3d { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
+  .graphic--game { transform: translate(-50%, -50%) scale(0.7); left: calc(50% + 50px); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(0.75); }
+  .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.7); }
+  .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.7); }
+  .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.7); }
+}
+
+@media (max-width: 1024px) {
+  .col--photo {
+    width: 30vw;
+  }
+
+  .content-block {
+    left: 0;
+  }
+
+  .name-container {
+    left: 34vw;
+    width: 62vw;
+  }
+
+  .skills-container {
+    left: 65vw;
+  }
+
+  .name {
+    line-height: 0.75em;
+  }
+
+  /* Section 2 */
+  .col--about { width: 30vw; }
+  .about-title { font-size: 32px; }
+  .specialty-label { font-size: 18px; }
+  .graphic--uiux { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
+  .graphic--3d { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
+  .graphic--game { transform: translate(-50%, -50%) scale(0.6); left: calc(50% + 30px); }
+  .graphic--sound { transform: translate(-50%, -50%) scale(0.65); }
+  .col--uiux:hover .graphic--uiux { transform: translate(-50%, -52%) scale(0.6); }
+  .col--3d:hover .graphic--3d { transform: translate(-50%, -53%) scale(0.6); }
+  .col--game:hover .graphic--game { transform: translate(-50%, -53%) scale(0.6); }
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+
+  .scroll-container {
+    height: auto;
+    overflow: visible;
+  }
+
+  .sections-wrapper {
+    height: auto;
+    transform: none !important;
+  }
+
+  .section {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .col--photo {
+    width: 100%;
+    height: 50vh;
+    mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+  }
+
+  .col--2,
+  .col--3,
+  .col--4,
+  .col--5 {
+    display: none;
+  }
+
+  .content-block {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 40px 24px 60px;
+  }
+
+  .name-container {
+    position: relative;
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 32px;
+  }
+
+  .name {
+    font-size: clamp(48px, 12vw, 80px);
+    line-height: 1;
+  }
+
+  .label-portfolio {
+    font-size: clamp(20px, 4vw, 30px);
+  }
+
+  .skills-container {
+    position: relative;
+    right: unset;
+    bottom: unset;
+    padding-top: 24px;
+    padding-bottom: 0;
+  }
+
+  .skill {
+    font-size: clamp(20px, 4vw, 30px);
+    line-height: 40px;
+  }
+
+  /* Mobile Section 2 stack */
+  .section--specialties {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .col--about {
+    width: 100% !important;
+    height: 50vh;
+    mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 85%, transparent 100%);
+  }
+
+  .about-title-container {
+    position: relative;
+    top: 40px;
+    left: 24px;
+    transform: none;
+    width: auto;
+  }
+
+  .about-title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .col--specialty {
+    width: 100%;
+    height: 350px;
+    border-left: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 40px;
+  }
+
+  .col--sound {
+    border-bottom: none;
+  }
+
+  .graphic--uiux {
+    left: 50% !important;
+    transform: translate(-50%, -55%) scale(0.85);
+  }
+  .col--uiux:hover .graphic--uiux {
+    transform: translate(-50%, -57%) scale(0.85);
+  }
+
+  .graphic--3d {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  .col--3d:hover .graphic--3d {
+    transform: translate(-50%, -53%) scale(0.85);
+  }
+
+  .graphic--game {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+  .col--game:hover .graphic--game {
+    transform: translate(-50%, -53%) scale(0.85);
+  }
+
+  .graphic--sound {
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.85);
+  }
+
+  .specialty-label {
+    font-size: clamp(24px, 5vw, 32px);
+  }
+}
