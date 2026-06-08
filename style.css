@@ -403,8 +403,16 @@ html, body {
   font-weight: 300;
   font-size: 38px;
   line-height: normal;
-  color: var(--text);
+  color: rgba(71, 71, 71, 0.5);
   white-space: nowrap;
+  display: inline-block;
+  transition: color 0.4s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.col--specialty:hover .specialty-label {
+  color: var(--text);
+  font-weight: 400;
+  transform: translateY(-6px);
 }
 
 /* UI/UX Graphic Positioning & Animation */
@@ -464,7 +472,7 @@ html, body {
 .graphic--3d {
   position: absolute;
   top: calc(50% + 8px);
-  left: calc(50% + 86px);
+  left: calc(50% + 120px);
   transform: translate(-50%, -50%);
   width: 290px;
   height: 290px;
