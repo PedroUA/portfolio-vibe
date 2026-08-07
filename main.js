@@ -1,12 +1,24 @@
 /* ============================================================
-   main.js — Parallax Interactive Effect & Page Logic
+   main.js — Parallax Interactive Effect & Page Session Tracking
    ============================================================ */
 
 (function () {
   'use strict';
 
+  /* ----------------------------------------------------------
+     Session Tracking — Entrance animation ONLY on first visit
+     ---------------------------------------------------------- */
+  try {
+    if (!sessionStorage.getItem('siteOpened')) {
+      document.body.classList.add('initial-load');
+      sessionStorage.setItem('siteOpened', 'true');
+    }
+  } catch (e) {
+    // Fallback if sessionStorage is restricted
+    document.body.classList.add('initial-load');
+  }
+
   const photoWrapper = document.getElementById('photo-wrapper');
-  const container    = document.getElementById('landing-canvas') || document.body;
 
   if (!photoWrapper) return;
 
