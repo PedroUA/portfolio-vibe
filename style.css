@@ -303,6 +303,52 @@ body {
 }
 
 /* ============================================================
+   2K & 4K HIGH-RESOLUTION PROPORTIONAL SCALING (2560px & 3840px)
+   ============================================================ */
+@media (min-width: 1921px) {
+  :root {
+    --right-bar-w: 2.86vw;
+    --nav-top: 3.7vh;
+    --nav-right-gap: 2.86vw;
+    --gap-top-portfolio: 29vh;
+    --gap-portfolio-name: 1.74vw;
+    --gap-photo-name: 4.61vw;
+    --gap-name-skills: 1.66vw;
+  }
+
+  .nav-link {
+    font-size: 1.35vw;
+  }
+
+  .photo-column {
+    max-width: 35vw;
+  }
+
+  .content-group {
+    top: 21.8vh;
+    left: 22vw;
+  }
+
+  .label-portfolio {
+    font-size: 2.46vw;
+    margin-left: 0.75vw;
+  }
+
+  .hero-name {
+    font-size: 9.27vw;
+  }
+
+  .skills-block {
+    margin-left: 42.7vw;
+    width: 17.45vw;
+  }
+
+  .skill-item {
+    font-size: 2.46vw;
+  }
+}
+
+/* ============================================================
    RESPONSIVE BREAKPOINTS (PRESERVES PROPORTIONS & RATIOS)
    ============================================================ */
 
