@@ -8,12 +8,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.0.1">
+  <link rel="stylesheet" href="style.css?v=1.5.1">
 </head>
 <body class="page-about">
 
   <div class="viewport-wrapper" id="viewport-wrapper">
     <div class="landing-canvas" id="landing-canvas">
+
+      <!-- Brand Logo / Name on Top Left -->
+      <a href="index.html" class="logo-brand">Pedro Lemos</a>
 
       <!-- Top Navigation Header -->
       <header class="top-nav" id="top-nav">
@@ -24,16 +27,75 @@
         </nav>
       </header>
 
-      <!-- Blank Main Area for Future Layout Design -->
-      <main class="main-layout" id="main-layout">
-        <!-- Blank content canvas reserved for future design -->
+      <!-- About Me Main Layout (3-Column Layout: Photo Left, Bio Center Bottom, Photo 2 Right Top) -->
+      <main class="about-container" id="about-container">
+        
+        <!-- Left Column: Main Portrait Photo -->
+        <div class="about-left-col">
+          <div class="about-photo-wrapper">
+            <img src="assets/photo_about.jpg" alt="Pedro Lemos Portrait" class="about-photo-img" />
+          </div>
+        </div>
+
+        <!-- Center Column: Bio Text (Positioned near bottom) -->
+        <div class="about-center-col">
+          <div class="about-description">
+            <p class="about-bio">
+              I'm a multimedia graduate passionate about interactive design, spatial 3D aesthetics, and immersive audio experiences. With a focus on UI/UX, game design, and sound synthesis, I craft engaging digital environments.
+            </p>
+            <p class="about-skills-list">
+              My primary disciplines include: UI/UX Design, Sound Design, Game Design, and 3D Modeling.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column: Secondary Photo & Caption (Positioned directly below Nav Header) -->
+        <div class="about-right-col">
+          <div class="secondary-card">
+            <div class="secondary-photo-wrapper">
+              <img src="assets/photo_about3.jpg" alt="Creative Experiment" class="secondary-photo-img" />
+            </div>
+            <p class="secondary-photo-caption">
+              Exploring spatial forms, generative light, and experimental visual compositions throughout creative research.
+            </p>
+          </div>
+        </div>
+
       </main>
 
       <!-- Right Accent Dark Bar (Maintained) -->
-      <aside class="right-accent-bar" id="right-accent-bar"></aside>
+      <aside class="right-accent-bar" id="right-accent-bar">
+        <a href="index.html" class="home-btn" aria-label="Go to Home Page">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"/>
+          </svg>
+        </a>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <button class="info-btn" id="info-btn" aria-label="About this portfolio">?</button>
+      </aside>
 
     </div>
   </div>
+
+  <!-- Info Modal / Popup -->
+  <div class="modal-overlay" id="info-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <h2 class="modal-title">About this Portfolio</h2>
+      <div class="modal-body">
+        <p><strong>Purpose:</strong> This digital canvas showcases my creative engineering works across UI/UX, 3D modeling, game systems, and audio synthesis.</p>
+        <p><strong>Behind the Scenes:</strong> Developed with pure semantic HTML5, fluid modern vanilla CSS (using clamp coordinates for uncompromised resolution support from 1366x768 up to 4K displays), and vanilla JS. It features momentum parallax displacement, staggered entrance animations, and robust query cache versioning.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Minimalist Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
 
   <script src="main.js"></script>
 </body>

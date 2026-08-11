@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pedro Lemos — Portfolio Showcase. Selected works in UI/UX Design, Sound Design, Game Design, and 3D Modeling.">
+  <meta name="description"
+    content="Pedro Lemos — Portfolio Showcase. Selected works in UI/UX Design, Sound Design, Game Design, and 3D Modeling.">
   <title>Pedro Lemos — Portfolio Projects</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.0.1">
+  <link rel="stylesheet" href="style.css?v=1.5.1">
 </head>
+
 <body class="page-portfolio">
 
   <div class="viewport-wrapper" id="viewport-wrapper">
     <div class="landing-canvas" id="landing-canvas">
+
+      <!-- Brand Logo / Name on Top Left -->
+      <a href="index.html" class="logo-brand">Pedro Lemos</a>
 
       <!-- Top Navigation Header -->
       <header class="top-nav" id="top-nav">
@@ -26,62 +32,59 @@
 
       <!-- Main Portfolio Content Area -->
       <main class="portfolio-main" id="portfolio-main">
-        
+
         <!-- Header Title Section -->
         <div class="portfolio-header-block">
-          <a href="index.html" class="back-link">&larr; Back to Home</a>
           <h1 class="portfolio-title">Selected Projects</h1>
-          <p class="portfolio-subtitle">Explore creative works across UI/UX, 3D Modeling, Game Design, and Sound.</p>
+          <p class="portfolio-subtitle">Cross-disciplinary projects at the intersection of design, interaction, and
+            sound.</p>
         </div>
 
         <!-- Project Grid -->
         <div class="portfolio-grid">
-          
+
           <!-- Card 1: UI/UX -->
           <article class="project-card">
             <div class="card-image-wrapper">
-              <span class="card-preview-text">UI/UX Design</span>
+              <img src="assets/uiux_design_preview.jpg" alt="UI/UX Design Preview" class="card-img" />
             </div>
             <div class="card-info">
-              <span class="card-category">UI/UX Design</span>
-              <h2 class="card-title">Mobile Interface & Design System</h2>
-              <p class="card-desc">User-centered mobile wireframes and interactive visual prototypes.</p>
+              <h2 class="card-title">UI/UX Design</h2>
+              <p class="card-desc">User-centered interfaces, rapid prototyping, and fluid design systems.</p>
             </div>
           </article>
 
           <!-- Card 2: 3D Modeling -->
           <article class="project-card">
             <div class="card-image-wrapper">
-              <span class="card-preview-text">3D Modeling</span>
+              <img src="assets/three_d_modeling_preview.jpg" alt="3D Modeling Preview" class="card-img" />
             </div>
             <div class="card-info">
-              <span class="card-category">3D Modeling</span>
-              <h2 class="card-title">Abstract Geometric Environment</h2>
-              <p class="card-desc">Low-poly & high-fidelity 3D modeling and lighting composition.</p>
+              <h2 class="card-title">3D Modeling</h2>
+              <p class="card-desc">Hard-surface assets, low-poly environments, and lighting studies.</p>
             </div>
           </article>
 
           <!-- Card 3: Game Design -->
           <article class="project-card">
             <div class="card-image-wrapper">
-              <span class="card-preview-text">Game Design</span>
+              <img src="assets/game_design_preview.jpg" alt="Game Design Preview" class="card-img" />
             </div>
             <div class="card-info">
-              <span class="card-category">Game Design</span>
-              <h2 class="card-title">Interactive Puzzle Engine</h2>
-              <p class="card-desc">Logic puzzle mechanics and game loop architecture.</p>
+              <h2 class="card-title">Game Design</h2>
+              <p class="card-desc">Gameplay prototypes, puzzle mechanics, and level architecture</p>
             </div>
           </article>
 
           <!-- Card 4: Sound Design -->
           <article class="project-card">
             <div class="card-image-wrapper">
-              <span class="card-preview-text">Sound Design</span>
+              <img src="assets/sound_design_preview.jpg" alt="Sound Design Preview" class="card-img" />
             </div>
             <div class="card-info">
-              <span class="card-category">Sound Design</span>
-              <h2 class="card-title">Atmospheric Audio Composition</h2>
-              <p class="card-desc">Dynamic audio synthesis and sound FX landscapes.</p>
+              <h2 class="card-title">Sound Design</h2>
+              <p class="card-desc">From custom audio synthesis to spatial mixing, polishing soundscapes and
+                mastering.</p>
             </div>
           </article>
 
@@ -90,10 +93,40 @@
       </main>
 
       <!-- Right Accent Dark Bar (Maintained) -->
-      <aside class="right-accent-bar" id="right-accent-bar"></aside>
+      <aside class="right-accent-bar" id="right-accent-bar">
+        <a href="index.html" class="home-btn" aria-label="Go to Home Page">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"/>
+          </svg>
+        </a>
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Menu">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <button class="info-btn" id="info-btn" aria-label="About this portfolio">?</button>
+      </aside>
 
     </div>
   </div>
 
+  <!-- Info Modal / Popup -->
+  <div class="modal-overlay" id="info-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <h2 class="modal-title">About this Portfolio</h2>
+      <div class="modal-body">
+        <p><strong>Purpose:</strong> This digital canvas showcases my creative engineering works across UI/UX, 3D modeling, game systems, and audio synthesis.</p>
+        <p><strong>Behind the Scenes:</strong> Developed with pure semantic HTML5, fluid modern vanilla CSS (using clamp coordinates for uncompromised resolution support from 1366x768 up to 4K displays), and vanilla JS. It features momentum parallax displacement, staggered entrance animations, and robust query cache versioning.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Minimalist Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
+  <script src="main.js"></script>
 </body>
+
 </html>
