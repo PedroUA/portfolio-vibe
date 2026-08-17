@@ -10,7 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=1.5.2">
+  <link rel="preload" as="image" href="assets/uiux_design_preview.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/3d_modeling_preview.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/game_design_preview.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/sound_design_preview.webp" type="image/webp" fetchpriority="high">
+  <link rel="stylesheet" href="style.css?v=1.9.6">
 </head>
 
 <body class="page-portfolio">
@@ -18,11 +22,9 @@
   <div class="viewport-wrapper" id="viewport-wrapper">
     <div class="landing-canvas" id="landing-canvas">
 
-      <!-- Brand Logo / Name on Top Left -->
-      <a href="index.html" class="logo-brand">Pedro Lemos</a>
+            <a href="index.html" class="logo-brand">Pedro Lemos</a>
 
-      <!-- Top Navigation Header -->
-      <header class="top-nav" id="top-nav">
+            <header class="top-nav" id="top-nav">
         <nav class="nav-links">
           <a href="portfolio.html" class="nav-link active">Portfolio</a>
           <a href="about.html" class="nav-link">About</a>
@@ -30,34 +32,46 @@
         </nav>
       </header>
 
-      <!-- Main Portfolio Content Area -->
-      <main class="portfolio-main" id="portfolio-main">
+            <main class="portfolio-main" id="portfolio-main">
 
-        <!-- Header Title Section -->
-        <div class="portfolio-header-block">
-          <h1 class="portfolio-title">Selected Projects</h1>
+                <div class="portfolio-header-block">
+          <h1 class="portfolio-title">My Projects</h1>
           <p class="portfolio-subtitle">Cross-disciplinary projects at the intersection of design, interaction, and
             sound.</p>
         </div>
 
-        <!-- Project Grid -->
-        <div class="portfolio-grid">
+                <div class="portfolio-grid">
 
-          <!-- Card 1: UI/UX -->
-          <article class="project-card">
+                    <a href="uiux.html" class="project-card project-card--active" aria-label="Explore UI/UX Design Projects">
             <div class="card-image-wrapper">
-              <img src="assets/uiux_design_preview.jpg" alt="UI/UX Design Preview" class="card-img" />
+              <picture>
+                <source srcset="assets/uiux_design_preview.webp" type="image/webp">
+                <img src="assets/uiux_design_preview.png" alt="Micropolariscope UI/UX Design Preview" class="card-img" loading="eager"
+                  fetchpriority="high" decoding="async" />
+              </picture>
             </div>
             <div class="card-info">
               <h2 class="card-title">UI/UX Design</h2>
-              <p class="card-desc">User-centered interfaces, rapid prototyping, and fluid design systems.</p>
+              <p class="card-desc">User-centered interfaces, scientific workflows, rapid prototyping, and fluid design systems.</p>
             </div>
-          </article>
+          </a>
 
-          <!-- Card 2: 3D Modeling -->
-          <article class="project-card">
+                    <article class="project-card project-card--locked" aria-label="3D Modeling (Coming Soon)">
             <div class="card-image-wrapper">
-              <img src="assets/three_d_modeling_preview.jpg" alt="3D Modeling Preview" class="card-img" />
+              <picture>
+                <source srcset="assets/3d_modeling_preview.webp" type="image/webp">
+                <img src="assets/3d_modeling_preview.png" alt="3D Modeling Preview" class="card-img card-img--3d" loading="eager"
+                  fetchpriority="high" decoding="async" />
+              </picture>
+              <div class="locked-overlay">
+                <div class="lock-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Coming Soon</span>
+                </div>
+              </div>
             </div>
             <div class="card-info">
               <h2 class="card-title">3D Modeling</h2>
@@ -65,26 +79,49 @@
             </div>
           </article>
 
-          <!-- Card 3: Game Design -->
-          <article class="project-card">
+                    <article class="project-card project-card--locked" aria-label="Game Design (Coming Soon)">
             <div class="card-image-wrapper">
-              <img src="assets/game_design_preview.jpg" alt="Game Design Preview" class="card-img" />
+              <picture>
+                <source srcset="assets/game_design_preview.webp" type="image/webp">
+                <img src="assets/game_design_preview.png" alt="Game Design Preview" class="card-img" loading="eager"
+                  fetchpriority="high" decoding="async" />
+              </picture>
+              <div class="locked-overlay">
+                <div class="lock-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Coming Soon</span>
+                </div>
+              </div>
             </div>
             <div class="card-info">
               <h2 class="card-title">Game Design</h2>
-              <p class="card-desc">Gameplay prototypes, puzzle mechanics, and level architecture</p>
+              <p class="card-desc">Gameplay prototypes, puzzle mechanics, and level architecture.</p>
             </div>
           </article>
 
-          <!-- Card 4: Sound Design -->
-          <article class="project-card">
+                    <article class="project-card project-card--locked" aria-label="Sound Design (Coming Soon)">
             <div class="card-image-wrapper">
-              <img src="assets/sound_design_preview.jpg" alt="Sound Design Preview" class="card-img" />
+              <picture>
+                <source srcset="assets/sound_design_preview.webp" type="image/webp">
+                <img src="assets/sound_design_preview.png" alt="Sound Design Preview" class="card-img" loading="eager"
+                  fetchpriority="high" decoding="async" />
+              </picture>
+              <div class="locked-overlay">
+                <div class="lock-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>Coming Soon</span>
+                </div>
+              </div>
             </div>
             <div class="card-info">
               <h2 class="card-title">Sound Design</h2>
-              <p class="card-desc">From custom audio synthesis to spatial mixing, polishing soundscapes and
-                mastering.</p>
+              <p class="card-desc">From custom audio synthesis to spatial mixing, soundscapes and mastering.</p>
             </div>
           </article>
 
@@ -92,11 +129,11 @@
 
       </main>
 
-      <!-- Right Accent Dark Bar (Maintained) -->
-      <aside class="right-accent-bar" id="right-accent-bar">
+            <aside class="right-accent-bar" id="right-accent-bar">
         <a href="index.html" class="home-btn" aria-label="Go to Home Page">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z"/>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1V9.5z" />
           </svg>
         </a>
         <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Menu">
@@ -110,14 +147,13 @@
     </div>
   </div>
 
-  <!-- Info Modal / Popup -->
-  <div class="modal-overlay" id="info-modal">
+    <div class="modal-overlay" id="info-modal">
     <div class="modal-content">
       <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
       <h2 class="modal-title">About this Portfolio</h2>
       <div class="modal-body">
-        <p><strong>Purpose:</strong> This digital canvas showcases my creative engineering works across UI/UX, 3D modeling, game systems, and audio synthesis.</p>
-        <p><strong>Behind the Scenes:</strong> Developed with pure semantic HTML5, fluid modern vanilla CSS (using clamp coordinates for uncompromised resolution support from 1366x768 up to 4K displays), and vanilla JS. It features momentum parallax displacement, staggered entrance animations, and robust query cache versioning.</p>
+        <p>This website serves as an evolving digital canvas and personal archive, a space to document independent projects.</p>
+        <p><strong>Stack & Performance:</strong> Vanilla HTML5 / CSS3 / JavaScript - Optimized WebP & Inline SVG - Priority Fetching</p>
       </div>
     </div>
   </div>
